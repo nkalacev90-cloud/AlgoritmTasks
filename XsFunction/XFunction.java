@@ -1,11 +1,10 @@
 package AlgoritmTask.XsFunction;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.io.UnsupportedEncodingException;
+
+
 
 public class XFunction {
 
@@ -19,14 +18,18 @@ public class XFunction {
                 Integer.toBinaryString(number)).replace(' ', '0');
 
         System.out.println("number = " + number
-                + "  bin=" + acc
-                + "  hex=0x" + String.format("%02X", Integer.parseInt(acc, 2)));
+                + "  bin=" + acc);
         System.out.println();
+
+        String accLate ="";
+
+        String bits = "";
 
         for (int i = 0; i < bytes.length; i++) {
             String byteBinary = String.format("%8s",
                     Integer.toBinaryString(bytes[i] & 0xFF)).replace(' ', '0');
 
+            accLate = acc;
             acc = bitwiseMultiply(acc, byteBinary);
 
             int dec = Integer.parseInt(acc, 2);
@@ -34,9 +37,10 @@ public class XFunction {
 
             System.out.println("шаг " + (i + 1)
                     + ":  " + byteBinary
-                    + "  ->  " + acc
-                    + "  hex=0x" + hex);
+                    + " * " + accLate
+                    + "  ->  " + acc);
         }
+
 
         int finalDec = Integer.parseInt(acc, 2);
         String finalHex = String.format("%02X", finalDec);

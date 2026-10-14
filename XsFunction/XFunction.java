@@ -9,8 +9,8 @@ import java.util.Map;
 public class XFunction {
 
 
-    public static void XFunctionText(String text, int number) {
-
+    public static void XFunctionText(String text) {
+        int number = 255;
         byte[] bytes = text.getBytes(StandardCharsets.UTF_8);
 
         // Двоичное представление числа (8 бит)
